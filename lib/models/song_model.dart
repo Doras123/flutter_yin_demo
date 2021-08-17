@@ -7,6 +7,7 @@ class SongItem {
   late final String coverPictureUrl;
   late final String songUrl;
   late final String songName;
+  late final String type;
   late final int commentCount;
   late final int thumbUpCount;
   late final int readCount;
@@ -18,6 +19,7 @@ class SongItem {
     coverPictureUrl = 'https://img9.doubanio.com/view/subject/m/public/s33963585.jpg';
     songUrl ='music.163.com/outchain/player?type=2&id=1863138478&auto=1';
     songName = 'Call';
+    type = 'VIP';
     commentCount = 209;
     thumbUpCount = 24677;
     readCount = 138946;

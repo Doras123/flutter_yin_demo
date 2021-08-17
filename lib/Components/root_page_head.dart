@@ -19,7 +19,7 @@ class RootPageHead extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(left: 2),
               child: Text(
-                '音悦台',
+                '音阅Bar',
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w800,

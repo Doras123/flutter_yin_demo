@@ -11,7 +11,9 @@ class AppColors {
 
   static const Color info = Color(0xff00a1d6);
 
-  static const Color brand_color = Color(0xff2368fb);
+  static const Color brand_color = Color(0xffb22222);
+
+  static const Color brand_color1 = Color(0xff2368fb);
 
   static const Color active = Color(0xff464646);
 
