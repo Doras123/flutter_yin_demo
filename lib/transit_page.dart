@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_yin_demo/utils/util.dart';
 
 import 'root_page.dart';
 
@@ -53,10 +54,10 @@ class _TransitPageState extends State<TransitPage> {
           ),
           //设置启动页跳过按钮的位置
           Positioned(
-            top: MediaQuery.of(context).padding.top+10,//获取状态栏高度后加10px
-            right: 10,
+            top: MediaQuery.of(context).padding.top+toRpx(context, 20),//获取状态栏高度后加10px
+            right: toRpx(context, 20),
             child: InkWell(
-              child: _clipButton(),
+              child: _clipButton(context),
               onTap: _jumpToRootPage,
             ),
           )
@@ -65,25 +66,25 @@ class _TransitPageState extends State<TransitPage> {
     );
   }
 
-  Widget _clipButton() {
+  Widget _clipButton(context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: Container(
-        width: 55,
-        height: 22,
+        width: toRpx(context, 100),
+        height: toRpx(context, 44),
         color: Colors.black.withOpacity(0.3),
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
+              padding: EdgeInsets.symmetric(horizontal: toRpx(context, 12)),
               child: Text(
                 '跳过',
-                style: TextStyle(color: Colors.white,fontSize: 13),
+                style: TextStyle(color: Colors.white,fontSize: toRpx(context, 22)),
               ),
             ),
             Text(
               '$_currentTime',
-              style: TextStyle(color: Colors.deepOrange,fontSize: 14),
+              style: TextStyle(color: Colors.deepOrange,fontSize: toRpx(context, 24)),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_yin_demo/config/app_colors.dart';
+import 'package:flutter_yin_demo/utils/util.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -14,17 +15,17 @@ class SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 5,
+        titleSpacing: toRpx(context, 10), //标题与leading的间距
         automaticallyImplyLeading: false,  //隐藏leading
         title: _searchContent(),
         actions: <Widget>[
           CupertinoButton(
-            padding: EdgeInsets.only(right: 10),
+            padding: EdgeInsets.only(right: toRpx(context, 20)),
             child: Text(
               '取消',
               style: TextStyle(
                 color: AppColors.active,
-                fontSize: 14
+                fontSize: toRpx(context, 26)
               ),
             ),
             onPressed:() {
@@ -38,8 +39,8 @@ class SearchPageState extends State<SearchPage> {
 
   Widget _searchContent() {
     return Container(
-      height: 25,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      height: toRpx(context, 45),
+      margin: EdgeInsets.symmetric(horizontal: toRpx(context, 20)),
       decoration: BoxDecoration(
         color: AppColors.page,
         borderRadius: BorderRadius.circular(30),
@@ -47,10 +48,10 @@ class SearchPageState extends State<SearchPage> {
       child: Row(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: toRpx(context, 14)),
             child: Icon(
               Icons.search,
-              size: 15,
+              size: toRpx(context, 28),
               color: AppColors.un3active,
             ),
           ),
@@ -60,7 +61,7 @@ class SearchPageState extends State<SearchPage> {
                     border: InputBorder.none,
                     hintText: '搜索关键词',
                     hintStyle: TextStyle(
-                      fontSize: 12,
+                      fontSize: toRpx(context, 22),
                       color: AppColors.un3active,
                     ),
                   ),

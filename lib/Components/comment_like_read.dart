@@ -18,23 +18,24 @@ class CommentLikeRead extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        _iconText(Icons.comment,commentCount),
-        _iconText(Icons.thumb_up, thumbUpCount),
-        _iconText(Icons.remove_red_eye_outlined, readCount)
+        _iconText(Icons.comment,commentCount,context),
+        _iconText(Icons.thumb_up, thumbUpCount,context),
+        _iconText(Icons.remove_red_eye_outlined, readCount,context)
       ],
     );
   }
 
-  Widget _iconText(icon, int count) {
+  Widget _iconText(icon, int count, context) {
     return Expanded(
       child: Row(
         children: <Widget>[
           Icon(
             icon,
             color: AppColors.un2active,
-            size: 18
+            size: toRpx(context, 30),
+
           ),
-          SizedBox(width: 4),
+          SizedBox(width: toRpx(context, 8)),
           Expanded(
             child: Text(
               formatCharCount(count),
@@ -42,7 +43,7 @@ class CommentLikeRead extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   color: AppColors.un3active,
-                  fontSize: 12
+                  fontSize: toRpx(context, 24)
               ),
             ),
           ),

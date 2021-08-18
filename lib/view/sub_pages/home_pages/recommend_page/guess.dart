@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_yin_demo/Components/cover.dart';
 import 'package:flutter_yin_demo/config/app_colors.dart';
 import 'package:flutter_yin_demo/models/song_model.dart';
+import 'package:flutter_yin_demo/utils/util.dart';
 
 class Guess extends StatefulWidget {
   const Guess({Key? key}) : super(key: key);
@@ -20,9 +21,9 @@ class _GuessState extends State<Guess> {
     return Column(
       children: <Widget>[
         _guessHead(),
-        SizedBox(height: 10),
+        SizedBox(height: toRpx(context, 12)),
         _guessContent(),
-        SizedBox(height: 20),
+        SizedBox(height:  toRpx(context, 12)),
         _changIcon()
       ],
     );
@@ -35,7 +36,7 @@ class _GuessState extends State<Guess> {
         Text(
           '猜你喜欢',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: toRpx(context, 28),
             fontWeight: FontWeight.w700,
             color: AppColors.active,
           ),
@@ -54,10 +55,14 @@ class _GuessState extends State<Guess> {
           '更多',
           style: TextStyle(
             color: AppColors.un3active,
-            fontSize: 13,
+            fontSize: toRpx(context, 22),
           ),
         ),
-        Icon(Icons.navigate_next,color: AppColors.un3active,size: 17)
+        Icon(
+          Icons.navigate_next,
+            color: AppColors.un3active,
+            size: toRpx(context, 28)
+        )
       ],
     );
   }
@@ -73,14 +78,14 @@ class _GuessState extends State<Guess> {
             crossAxisCount: 3,  //每行3个
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            childAspectRatio: 0.75,   //宽高比
+            childAspectRatio: 0.7,   //宽高比
           ),
           itemBuilder: (BuildContext context, int index) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Cover(count: songItem.readCount),
-                SizedBox(height: 5),
+                SizedBox(height: toRpx(context, 12)),
                 _describe()
               ],
             );
@@ -97,7 +102,8 @@ class _GuessState extends State<Guess> {
         Row(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 2),
+              padding: EdgeInsets.symmetric(vertical: toRpx(context, 2),
+                  horizontal: toRpx(context, 6)),
               decoration: BoxDecoration(
                 color: AppColors.brand_color,
                 borderRadius: BorderRadius.circular(4)
@@ -106,17 +112,18 @@ class _GuessState extends State<Guess> {
                 songItem.type,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 10
+                  fontSize: toRpx(context, 16),
+                  fontWeight: FontWeight.w600
                 ),
               ),
             ),
-            SizedBox(width: 3),
+            SizedBox(width: toRpx(context, 6)),
             Text(
               songItem.songName,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: toRpx(context, 23),
                 color: AppColors.active,
               ),
             )
@@ -127,7 +134,7 @@ class _GuessState extends State<Guess> {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: toRpx(context, 23),
             color: AppColors.active,
           ),
         )
@@ -143,13 +150,13 @@ class _GuessState extends State<Guess> {
             Image.asset(
               'assets/images/icons/change.png',
               color: AppColors.brand_color,
-              scale: 12,
+              scale: toRpx(context, 24),
             ),
-            SizedBox(width: 5,),
+            SizedBox(width: toRpx(context, 15),),
             Text(
               '换一批',
               style: TextStyle(
-                fontSize: 13,
+                fontSize: toRpx(context, 22),
                 color: AppColors.unactive,
               ),
             )

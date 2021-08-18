@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:flutter_yin_demo/config/app_colors.dart';
-import 'package:flutter_yin_demo/view/sub_pages/home_pages/recommend_page.dart';
+import 'package:flutter_yin_demo/utils/util.dart';
+import 'package:flutter_yin_demo/view/sub_pages/home_pages/recommend_page/recommend_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RotationChart extends StatefulWidget {
@@ -26,10 +27,9 @@ class _RotationChartState extends State<RotationChart> {
       },
       pagination: SwiperPagination(
         alignment: Alignment.bottomCenter,
-        margin: EdgeInsets.fromLTRB(0, 0, 15, 10),
         builder: DotSwiperPaginationBuilder(
-          size: 7,
-          activeSize: 9,
+          size: toRpx(context, 12),
+          activeSize: toRpx(context, 16),
           color: AppColors.unactive.withOpacity(0.5),
           activeColor: Colors.white.withOpacity(0.8),
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 ///px转化为rpx
 double toRpx(BuildContext context,double size) {
-  double rpx =MediaQuery.of(context).size.width/750;
+  double rpx = MediaQuery.of(context).size.width/750;
   return size * rpx;
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_yin_demo/utils/util.dart';
 import 'package:proste_indexed_stack/proste_indexed_stack.dart';
 import 'package:flutter_yin_demo/config/app_colors.dart';
 import 'package:flutter_yin_demo/view/root_pages/home_page.dart';
@@ -56,13 +57,13 @@ class _RootPageState extends State<RootPage> {
   }
 
   //发布按钮
-  Widget _createMediaButton() {
+  Widget _createMediaButton(context) {
     return Container(
-      margin: EdgeInsets.only(top: 30),
-      width: 44,
-      height: 44,
+      margin: EdgeInsets.only(top: toRpx(context, 45)),
+      width: toRpx(context, 80),
+      height: toRpx(context, 80),
       child: FloatingActionButton(
-        child: Icon(Icons.add_box_outlined),
+        child: Icon(Icons.add_box_outlined,size: toRpx(context, 42)),
         onPressed: _onCreateMedia,
         backgroundColor: AppColors.active,
       ),
@@ -77,13 +78,16 @@ class _RootPageState extends State<RootPage> {
         currentIndex: _currentIndex,  //当前选中标识符
         onTap: _onTap,
         type: BottomNavigationBarType.fixed,
+        unselectedLabelStyle: TextStyle(fontSize: toRpx(context, 22)),
+        selectedLabelStyle: TextStyle(fontSize: toRpx(context, 22)),
+        iconSize: toRpx(context, 42),
       ),
       //ProsteIndexedStack包裹，实现底部导航切换时保持原页面状态
       body: ProsteIndexedStack(
         index: _currentIndex,
         children: bodyList,
       ),
-      floatingActionButton: _createMediaButton(),
+      floatingActionButton: _createMediaButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

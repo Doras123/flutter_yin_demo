@@ -13,22 +13,23 @@ class SongCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
-        padding: EdgeInsets.all(toRpx(context, 40)),
+        padding: EdgeInsets.symmetric(horizontal: toRpx(context, 20),
+            vertical: toRpx(context, 40)),
         child: Row(
           children: <Widget>[
-            _songCover(),
-            SizedBox(width: 8,),
-            _songContent()
+            _songCover(context),
+            SizedBox(width: toRpx(context, 13)),
+            _songContent(context)
           ]
         )
     );
   }
 
   //封面
-  Widget _songCover() {
+  Widget _songCover(context) {
     return SizedBox(
-      width: 75,
-      height: 75,
+      width: toRpx(context, 140),
+      height: toRpx(context, 140),
       child: Stack(
         fit: StackFit.expand, //拉伸
         children: [
@@ -43,8 +44,8 @@ class SongCard extends StatelessWidget {
           Center(
             child: Image.asset(
               'assets/images/icons/play-1.png',
-              width: 25,
-              height: 25,
+              width: toRpx(context, 50),
+              height: toRpx(context, 50),
               color: Colors.white.withOpacity(0.8),
             ),
           )
@@ -53,10 +54,10 @@ class SongCard extends StatelessWidget {
     );
   }
 
-  Widget _songContent() {
+  Widget _songContent(context) {
     return Expanded(
       child: SizedBox(
-        height: 75,
+        height: toRpx(context, 140),
         child: Stack(
           children: [
             Text(
@@ -65,7 +66,7 @@ class SongCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: AppColors.active,
-                fontSize: 16,
+                fontSize: toRpx(context, 30),
                 fontWeight: FontWeight.w600
               ),
             ),
@@ -74,11 +75,11 @@ class SongCard extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   SizedBox(
-                    width: 110,
+                    width: toRpx(context, 180),
                     child: AvatarRoleName(
                       avatarUrl: songItem.user.avatarUrl,
                       userName: songItem.user.userName,
-                      showType: false,  //不显示roleType
+                      showType: false,//不显示roleType
                     ),
                   ),
                   Expanded(

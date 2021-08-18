@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_yin_demo/Components/root_page_head.dart';
 import 'package:flutter_yin_demo/config/app_colors.dart';
+import 'package:flutter_yin_demo/utils/util.dart';
 import 'package:flutter_yin_demo/view/sub_pages/home_pages/article_page.dart';
-import 'package:flutter_yin_demo/view/sub_pages/home_pages/recommend_page.dart';
+import 'package:flutter_yin_demo/view/sub_pages/home_pages/recommend_page/recommend_page.dart';
 import 'package:flutter_yin_demo/view/sub_pages/home_pages/song_page.dart';
 
 class _TabData {
@@ -43,8 +44,13 @@ class _HomePageState extends State<HomePage> {
           //顶部导航栏设置
           bottom: TabBar(
             indicatorColor: AppColors.brand_color,
-            indicatorWeight: 3.0,
-            indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
+            indicatorWeight: toRpx(context, 4),
+            indicatorPadding: EdgeInsets.symmetric(horizontal: toRpx(context, 15),
+                vertical: toRpx(context, 10)),
+            labelPadding: EdgeInsets.symmetric(horizontal: toRpx(context, 30),
+                vertical: toRpx(context, 10)),
+            unselectedLabelStyle: TextStyle(fontSize: toRpx(context, 32)),
+            labelStyle:TextStyle(fontSize: toRpx(context, 36)),
             isScrollable: true,
             tabs: tabBarList,
           ),

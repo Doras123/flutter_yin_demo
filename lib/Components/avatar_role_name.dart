@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_yin_demo/config/app_colors.dart';
+import 'package:flutter_yin_demo/utils/util.dart';
 
 class AvatarRoleName extends StatelessWidget {
   final String avatarUrl;
@@ -19,20 +20,20 @@ class AvatarRoleName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        _avatarUrl(),
+        _avatarUrl(context),
         Offstage(
           offstage: !showType,
-          child: _roleType(),
+          child: _roleType(context),
         ), //控制roleType是否显示
-        _userName()
+        _userName(context)
       ],
     );
   }
 
-  Widget _avatarUrl() {
+  Widget _avatarUrl(context) {
     return SizedBox(
-      width: 20,
-      height: 20,
+      width: toRpx(context, 37),
+      height: toRpx(context, 37),
       child: CircleAvatar(
         backgroundColor: Colors.grey[200],
         backgroundImage:NetworkImage(avatarUrl),
@@ -41,32 +42,33 @@ class AvatarRoleName extends StatelessWidget {
     );
   }
 
-  Widget _userName() {
+  Widget _userName(context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.only(left: 6),
+        margin: EdgeInsets.only(left: toRpx(context, 10)),
         child: Text(
           userName,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: AppColors.unactive,
-            fontSize: 14,
+            fontSize: toRpx(context, 25),
           ),
         ),
       ),
     );
   }
 
-  Widget _roleType() {
+  Widget _roleType(context) {
     if(type.isEmpty) {
       type = '未知';
     }else {
       type = type;
     }
     return Container(
-      margin: EdgeInsets.only(left: 6),
-      padding: EdgeInsets.symmetric(vertical: 2,horizontal: 4),
+      margin: EdgeInsets.only(left: toRpx(context, 10)),
+      padding: EdgeInsets.symmetric(vertical: toRpx(context, 2),
+          horizontal: toRpx(context, 6)),
       decoration: BoxDecoration(
         color: Colors.black,
             borderRadius: BorderRadius.circular(4)
@@ -75,7 +77,8 @@ class AvatarRoleName extends StatelessWidget {
         type,
         style: TextStyle(
           color: Colors.white,
-          fontSize: 10
+          fontWeight: FontWeight.w600,
+          fontSize: toRpx(context, 16)
         ),
       ),
     );

@@ -21,7 +21,7 @@ class Cover extends StatelessWidget {
           ),
           //增加蒙层让图片底部的文字可以更清晰度
           Container(
-            height: 30,
+            height: toRpx(context, 60),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
@@ -37,21 +37,21 @@ class Cover extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(5),
+            margin: EdgeInsets.all(toRpx(context, 8)),
             child: Row(
               children: <Widget>[
                 Icon(
                   Icons.play_arrow,
-                  size: 10,
+                  size: toRpx(context, 20),
                   color: Colors.white,
                 ),
-                SizedBox(width: 5),
+                SizedBox(width: toRpx(context, 8)),
                 Text(
                   formatCharCount(count),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontSize: 10,
+                      fontSize: toRpx(context, 20),
                       color: Colors.white
                   ),
                 )
