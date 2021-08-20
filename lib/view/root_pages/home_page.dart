@@ -20,7 +20,6 @@ final _tabDataList = <_TabData> [
   _TabData(tab: Text('歌曲'), body: SongPage()),
   _TabData(tab: Text('文章'), body: ArticlePage()),
   _TabData(tab: Text('视频'), body: Text('1')),
-  _TabData(tab: Text('儿童'), body: Text('1')),
 ];
 
 class HomePage extends StatefulWidget {

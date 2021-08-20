@@ -24,6 +24,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #http请求库
+  dio:
+
   #懒加载的层叠组件
   proste_indexed_stack:
 
@@ -31,6 +34,12 @@ dependencies:
   flutter_swiper_null_safety:
 
   url_launcher:
+
+  #下拉刷新
+  flutter_easyrefresh:
+
+  #loading动画
+  m_loading:
 
 
   # The following adds the Cupertino Icons font to your application.
