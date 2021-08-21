@@ -13,7 +13,7 @@ class SongPage extends StatefulWidget {
 
 class _SongPageState extends State<SongPage> {
   SongItem songItem =SongItem();
-  List<SongItem> list = [];
+  List<SongItem> _songList = [];
 
   late EasyRefreshController _controller;
 
@@ -21,13 +21,15 @@ class _SongPageState extends State<SongPage> {
   void initState() {
     super.initState();
     _controller = EasyRefreshController();
-    _genSongCardList();
   }
 
   //下拉刷新
   Future _onRefresh() async{
     await Future.delayed(Duration(milliseconds: 1000));
-    _controller.resetLoadState();
+    setState(() {
+      _songList.length = 0;
+    });
+    _controller.finishRefresh();
   }
 
   //上拉加载
@@ -38,11 +40,12 @@ class _SongPageState extends State<SongPage> {
   }
 
   Widget _genSongCardList() {
-
-    List.generate(10, (index) => list.add(songItem));
+    List.generate(10, (index) => _songList.add(songItem));
 
     return EasyRefresh(
       controller: _controller,
+      onLoad: _onLoad,
+      onRefresh: _onRefresh,
       header: BezierCircleHeader(
         backgroundColor: AppColors.page,
       ),
@@ -54,11 +57,9 @@ class _SongPageState extends State<SongPage> {
         textColor: AppColors.unactive,
         showInfo: false
       ),
-      onLoad: _onLoad,
-      onRefresh: _onRefresh,
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
-        itemCount: list.length,
+        itemCount: _songList.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
               elevation: 1,
