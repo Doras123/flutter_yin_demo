@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_yin_demo/Components/list_view_card.dart';
 import 'package:flutter_yin_demo/Components/rotation_chart.dart';
-import 'package:flutter_yin_demo/config/app_colors.dart';
+import 'package:flutter_yin_demo/Components/video_card.dart';
 import 'package:flutter_yin_demo/models/content_model.dart';
+import 'package:flutter_yin_demo/models/video_model.dart';
 import 'package:flutter_yin_demo/utils/util.dart';
 import 'package:flutter_yin_demo/view/sub_pages/home_pages/recommend_page/guess.dart';
 
@@ -26,11 +27,13 @@ class _RecommendPageState extends State<RecommendPage> {
       children:<Widget>[
         _banner(),
         _guess(),
+        _video(),
         _article(),
       ],
     );
   }
 
+  //Banner
   Widget _banner() {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -44,11 +47,12 @@ class _RecommendPageState extends State<RecommendPage> {
     );
   }
 
+  //猜你喜欢
   Widget _guess() {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white.withOpacity(0.5)
+          color: Colors.white.withOpacity(0.5),
       ),
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(vertical: toRpx(context, 10)),
@@ -57,11 +61,44 @@ class _RecommendPageState extends State<RecommendPage> {
     );
   }
 
+  //视频推荐
+  Widget _video() {
+    VideoItem videoItem = VideoItem();
+
+    List<VideoItem> list = [];
+    List.generate(2, (index) => list.add(videoItem));
+
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white.withOpacity(0.5),
+      ),
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(vertical: toRpx(context, 10)),
+      padding: EdgeInsets.all(toRpx(context, 20)),
+      child: ListView.separated(
+        shrinkWrap: true,  //Container跟随ListView内容变化高度
+        physics: NeverScrollableScrollPhysics(),  //禁止滚动效果
+        itemCount: list.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: VideoCard(videoItem: videoItem),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(color: Colors.grey.withOpacity(0.2));
+        },
+      ),
+    );
+  }
+
+  //文章推荐
   Widget _article() {
     Content content = Content();
 
     List<Content> list = [];
-    List.generate(10, (index) => list.add(content));
+    List.generate(5, (index) => list.add(content));
 
     return Container(
       decoration: BoxDecoration(
@@ -71,7 +108,7 @@ class _RecommendPageState extends State<RecommendPage> {
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(vertical: toRpx(context, 10)),
       child: ListView.separated(
-        shrinkWrap: true,  //Container跟随GridView内容变化高度
+        shrinkWrap: true,  //Container跟随ListView内容变化高度
         physics: NeverScrollableScrollPhysics(),  //禁止滚动效果
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
@@ -82,6 +119,5 @@ class _RecommendPageState extends State<RecommendPage> {
         },
       ),
     );
-
   }
 }

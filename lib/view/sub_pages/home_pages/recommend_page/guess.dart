@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_yin_demo/Components/cover.dart';
+import 'package:flutter_yin_demo/Components/song_cover.dart';
 import 'package:flutter_yin_demo/config/app_colors.dart';
 import 'package:flutter_yin_demo/models/song_model.dart';
 import 'package:flutter_yin_demo/utils/util.dart';
@@ -71,7 +71,7 @@ class _GuessState extends State<Guess> {
     return Column(
       children: [
         GridView.builder(
-          shrinkWrap: true,
+          shrinkWrap: true,  //Container跟随GridView内容变化高度
           physics: NeverScrollableScrollPhysics(),
           itemCount: 6,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

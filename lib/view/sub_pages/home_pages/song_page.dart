@@ -18,6 +18,13 @@ class _SongPageState extends State<SongPage> {
   late EasyRefreshController _controller;
 
   @override
+  Widget build(BuildContext context) {
+    return Center(
+      child:_genSongCardList(),
+    );
+  }
+
+  @override
   void initState() {
     super.initState();
     _controller = EasyRefreshController();
@@ -62,18 +69,12 @@ class _SongPageState extends State<SongPage> {
         itemCount: _songList.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
-              elevation: 1,
-              child: SongCard(songItem: songItem)
+            elevation: 1,
+            clipBehavior: Clip.antiAlias,
+            child: SongCard(songItem: songItem)
           );
         },
       ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child:_genSongCardList(),
     );
   }
 }

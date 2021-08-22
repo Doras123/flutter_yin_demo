@@ -5,6 +5,7 @@ import 'package:flutter_yin_demo/utils/util.dart';
 import 'package:flutter_yin_demo/view/sub_pages/home_pages/article_page.dart';
 import 'package:flutter_yin_demo/view/sub_pages/home_pages/recommend_page/recommend_page.dart';
 import 'package:flutter_yin_demo/view/sub_pages/home_pages/song_page.dart';
+import 'package:flutter_yin_demo/view/sub_pages/home_pages/video_page.dart';
 
 class _TabData {
   final Widget tab;
@@ -15,11 +16,9 @@ class _TabData {
 final _tabDataList = <_TabData> [
   _TabData(tab: Text('关注'), body: Text('1')),
   _TabData(tab: Text('推荐'), body: RecommendPage()),
-  _TabData(tab: Text('VIP'), body: Text('1')),
-  _TabData(tab: Text('热榜'), body: Text('1')),
   _TabData(tab: Text('歌曲'), body: SongPage()),
   _TabData(tab: Text('文章'), body: ArticlePage()),
-  _TabData(tab: Text('视频'), body: Text('1')),
+  _TabData(tab: Text('视频'), body: VideoPage()),
 ];
 
 class HomePage extends StatefulWidget {

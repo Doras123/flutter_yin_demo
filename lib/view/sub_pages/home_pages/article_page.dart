@@ -16,6 +16,13 @@ class _ArticlePageState extends State<ArticlePage> {
   late EasyRefreshController _controller;
 
   @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: _genContentList()
+    );
+  }
+
+  @override
   void initState() {
     super.initState();
     _controller = EasyRefreshController();
@@ -37,7 +44,7 @@ class _ArticlePageState extends State<ArticlePage> {
     _controller.finishLoad();
   }
 
-  Widget genContentList() {
+  Widget _genContentList() {
     List.generate(5, (index) => list.add(content));
 
     return EasyRefresh(
@@ -64,13 +71,6 @@ class _ArticlePageState extends State<ArticlePage> {
           );
         },
       ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: genContentList()
     );
   }
 }

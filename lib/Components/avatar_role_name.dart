@@ -13,7 +13,7 @@ class AvatarRoleName extends StatelessWidget {
     required this.avatarUrl,
     required this.userName,
     this.type = '',
-    this.showType = true,
+    this.showType = false,
   }) :super(key: key);
 
   @override
