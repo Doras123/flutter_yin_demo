@@ -76,18 +76,18 @@ class _RecommendPageState extends State<RecommendPage> {
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(vertical: toRpx(context, 10)),
       padding: EdgeInsets.all(toRpx(context, 20)),
-      child: ListView.separated(
+      child: ListView.builder(
         shrinkWrap: true,  //Container跟随ListView内容变化高度
         physics: NeverScrollableScrollPhysics(),  //禁止滚动效果
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: VideoCard(videoItem: videoItem),
+            child: Container(
+              margin: EdgeInsets.only(bottom: toRpx(context, 10)),
+              child: VideoCard(videoItem: videoItem),
+            )
           );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return Divider(color: Colors.grey.withOpacity(0.2));
         },
       ),
     );
